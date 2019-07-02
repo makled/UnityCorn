@@ -10,7 +10,7 @@ namespace Unitycorn
         // Start is called before the first frame update
         void Start()
         {
-
+            GetComponent<Rigidbody>().AddForce(this.transform.forward * 4f, ForceMode.Impulse);
         }
 
         // Update is called once per frame
@@ -22,6 +22,22 @@ namespace Unitycorn
         public void SetDamage(float d)
         {
             Damage = d;
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            //if(collision.gameObject.CompareTag("Enemy"))
+            //{
+            //    //Here apply damage to enemy
+                
+            //}
+
+            DestroyBullet();
+        }
+
+        private void DestroyBullet()
+        {
+            Destroy(gameObject);
         }
     }
 }
