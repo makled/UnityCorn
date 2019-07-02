@@ -20,7 +20,7 @@ namespace Unitycorn
         void Update()
         {
             lineRend.SetPosition(0, Muzzle.transform.position);
-            lineRend.SetPosition(1, Muzzle.transform.forward * 10f);
+            lineRend.SetPosition(1, Muzzle.transform.position + Muzzle.transform.forward * 10f);
         }
     }
 
