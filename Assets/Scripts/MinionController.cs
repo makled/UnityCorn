@@ -7,12 +7,14 @@ namespace Unitycorn
 {
     public class MinionController : MonoBehaviour
     {
-        public int health;
-
+        public float health;
+        public Animation_Test anim;
+        private MoveTowards movement;
         // Start is called before the first frame update
         void Start()
         {
-
+            anim = GetComponentInChildren<Animation_Test>();
+            movement = GetComponent<MoveTowards>();
         }
 
         // Update is called once per frame
@@ -21,11 +23,13 @@ namespace Unitycorn
 
         }
 
-        void receiveDamage(int damageAmount)
+        public void ReceiveDamage(float damageAmount)
         {
+            anim.DamageAni();
+
             health -= damageAmount;
             if (health <= 0)
-                Destroy(this);
+                StartCoroutine(Die());
         }
 
         void OnCollisionEnter(Collision collision)
@@ -34,6 +38,16 @@ namespace Unitycorn
             {
                 // TODO increase the score of the masterMind
             }
+        }
+
+        IEnumerator Die()
+        {
+            movement.speed = 0f;
+            anim.DeathAni();
+
+            yield return new WaitForSeconds(2.8f);
+
+            Destroy(this.gameObject);
         }
     }
 }

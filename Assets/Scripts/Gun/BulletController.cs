@@ -26,10 +26,11 @@ namespace Unitycorn
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Enemy"))
+            if (collision.collider.CompareTag("Enemy"))
             {
                 //Here apply damage to enemy
-                
+                collision.gameObject.transform.root.GetComponent<MinionController>().ReceiveDamage(Damage);
+                Debug.Log("Hit Enemy00");
             }
 
             DestroyBullet();
