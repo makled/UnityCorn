@@ -26,11 +26,11 @@ namespace Unitycorn
 
         private void OnCollisionEnter(Collision collision)
         {
-            //if(collision.gameObject.CompareTag("Enemy"))
-            //{
-            //    //Here apply damage to enemy
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                //Here apply damage to enemy
                 
-            //}
+            }
 
             DestroyBullet();
         }
