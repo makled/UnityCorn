@@ -61,7 +61,7 @@ namespace Unitycorn
             
             applyRegularLocomotion(vector);
 
-            Debug.Log("Vector: (" + vector.x + " ," + vector.y + ") mag: " + vector.magnitude);
+            //Debug.Log("Vector: (" + vector.x + " ," + vector.y + ") mag: " + vector.magnitude);
         }
 
         private void applyDash(Vector2 vector)
