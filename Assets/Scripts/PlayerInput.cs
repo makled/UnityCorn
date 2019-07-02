@@ -8,9 +8,10 @@ namespace Unitycorn
     public class PlayerInput : MonoBehaviour
     {
         public bool isShoot; 
-        public SteamVR_Action_Boolean button;
+        private Vector2 locomotionVector;
 
         public GunManager gun;
+        public LocomotionScript locomotion;
         // Start is called before the first frame update
         void Start()
         {
@@ -25,6 +26,9 @@ namespace Unitycorn
             {
                 gun.ShootGun();
             }
+
+            locomotionVector = SteamVR_Input.GetVector2("Locomotion", SteamVR_Input_Sources.LeftHand);
+            locomotion.supplyLocomotionVector(locomotionVector);
         }
 
 
