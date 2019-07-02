@@ -37,8 +37,8 @@ ExportedObj/
 
 
 #Scenes For testing
-*-test.scene
-*-test.scene.meta
+*-test.unity
+*-test.unity.meta
 
 # Unity3D generated meta files
 *.pidb.meta
