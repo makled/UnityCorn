@@ -11,7 +11,7 @@ namespace Unitycorn
         private static float CLOSE_TO_MAX_STICK_MAGNITUDE = 0.8f;
         private static float CLOSE_TO_MIN_STICK_MAGNITUDE = 0.5f;
         private static float LOCOMOTION_FORCE = 0.05f;
-        private static float MOMENTUM_PART = 0.66f;
+        private static float MOMENTUM_PART = 0.95f;
         private static float DASH_MULTIPLIER = 4f;
         private static int DASH_TIME_MILLIS = 400;
         private static int FLICK_TOLERANCE_MILLIS = 200;
@@ -124,7 +124,9 @@ namespace Unitycorn
             {
                 lastRegularLocomotion = lastRegularLocomotion + new System.TimeSpan(0, 0, 0, 0, 8);
                 Vector3 relativePositionChange = new Vector3(locomotion.x, 0, locomotion.y) * LOCOMOTION_FORCE;
-                Player.transform.position = Player.transform.position + PlayerHead.transform.TransformVector(relativePositionChange);
+                Vector3 globalPositionChange = PlayerHead.transform.TransformVector(relativePositionChange);
+                globalPositionChange.y = 0f;
+                Player.transform.position = Player.transform.position + globalPositionChange;
             }
         }
     }
