@@ -79,11 +79,13 @@ namespace Unitycorn
 
         private void applyRegularLocomotion(Vector2 vector)
         {
-            Vector2 locomotion = lastLocomotionVector * MOMENTUM_PART + vector * (1f-MOMENTUM_PART);
-            if(System.DateTime.Now.Subtract(lastDash) < new System.TimeSpan(0, 0, 0, 0, DASH_TIME_MILLIS))
+            if (System.DateTime.Now.Subtract(lastDash) < new System.TimeSpan(0, 0, 0, 0, DASH_TIME_MILLIS))
             {
-                locomotion = locomotion * 10f;
+                vector = vector * 4f;
             }
+
+            Vector2 locomotion = lastLocomotionVector * MOMENTUM_PART + vector * (1f-MOMENTUM_PART);
+            
 
             lastLocomotionVector = locomotion;
             while(lastRegularLocomotion<System.DateTime.Now)
