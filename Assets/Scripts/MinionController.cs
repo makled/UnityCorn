@@ -34,8 +34,9 @@ namespace Unitycorn
 
         void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "MasterMind")
+            if (collision.gameObject.tag == "Player")
             {
+                GameManager.Instance.IncreaseMasterMindCoin();
                 // TODO increase the score of the masterMind
             }
         }
@@ -46,6 +47,7 @@ namespace Unitycorn
             anim.DeathAni();
 
             yield return new WaitForSeconds(2.8f);
+            GameManager.Instance.IncreasePlayerCoin();
 
             Destroy(this.gameObject);
         }

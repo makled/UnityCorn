@@ -35,6 +35,9 @@ namespace Unitycorn
 
         public void AddEnemy(string enemyString)
         {
+            if (enemyString == "_")
+                return;
+
             Enemies.Add(enemyString);
             Debug.Log("Enemies");
         }
