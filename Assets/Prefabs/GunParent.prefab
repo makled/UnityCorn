@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042459156809801721}
   m_LocalRotation: {x: -0.30070576, y: -0, z: -0, w: 0.953717}
-  m_LocalPosition: {x: 0, y: 1.0610144, z: 0.783038}
+  m_LocalPosition: {x: 0, y: 1.12, z: 0.867}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5069078383070673795}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c9cc44c96e8e64cb5023bdfab19d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 5523437529039664475, guid: 6f601cee233e3d44ba8562dc840f8ee0,
+  BulletPrefab: {fileID: 1522068442394113968, guid: ddc729554a25ffc4894d9ccac2e97889,
     type: 3}
   MuzzleGameObject: {fileID: 1042459156809801721}
   Energy: 500
@@ -470,6 +470,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8991109276477312215}
     m_Modifications:
+    - target: {fileID: 100000, guid: 876a9efcae3245e4ab66feeb8f437976, type: 3}
+      propertyPath: m_Name
+      value: Bit Gun
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 876a9efcae3245e4ab66feeb8f437976, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -513,10 +517,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 876a9efcae3245e4ab66feeb8f437976, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 876a9efcae3245e4ab66feeb8f437976, type: 3}
-      propertyPath: m_Name
-      value: Bit Gun
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 876a9efcae3245e4ab66feeb8f437976, type: 3}

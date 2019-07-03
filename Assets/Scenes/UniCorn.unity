@@ -1098,6 +1098,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 544528809064549229, guid: e635584d122266047a89aba5934ba811,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 029ab0710e0cbb048be467157d03caab,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e635584d122266047a89aba5934ba811, type: 3}
 --- !u!114 &1602114346 stripped
@@ -1260,6 +1266,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 905362712, guid: fce27154b7fb74d479280e54bef2c61d, type: 3}
+      propertyPath: ArenaSize
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce27154b7fb74d479280e54bef2c61d, type: 3}
 --- !u!1 &2116365690 stripped
@@ -1338,17 +1348,17 @@ PrefabInstance:
     - target: {fileID: 1779975500826339570, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1779975500826339570, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1779975500826339570, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1779975502621686141, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
@@ -1364,6 +1374,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6768226271369432322, guid: 4c65152549c0a8445bd329de514d9197,
+        type: 3}
+      propertyPath: m_Name
+      value: Game Manager
+      objectReference: {fileID: 0}
     - target: {fileID: -3663144013225932613, guid: 4c65152549c0a8445bd329de514d9197,
         type: 3}
       propertyPath: MMCoinText
@@ -1383,11 +1398,6 @@ PrefabInstance:
         type: 3}
       propertyPath: MMCoin
       value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6768226271369432322, guid: 4c65152549c0a8445bd329de514d9197,
-        type: 3}
-      propertyPath: m_Name
-      value: Game Manager
       objectReference: {fileID: 0}
     - target: {fileID: 6768226271369432349, guid: 4c65152549c0a8445bd329de514d9197,
         type: 3}

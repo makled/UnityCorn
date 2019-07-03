@@ -79,25 +79,25 @@ namespace Unitycorn
 
         private void cropPositionOfPlayer()
         {
-            float offsetX = PlayerHead.transform.position.x - (ArenaSize+1.5f);
+            float offsetX = PlayerHead.transform.position.x - ArenaSize;
             if (offsetX > 0)
             {
                 Player.transform.position = Player.transform.position - new Vector3(offsetX, 0);
             }
-            if (offsetX < -60)
+            if (offsetX < -ArenaSize*2f)
             {
-                offsetX = (offsetX + 60);
+                offsetX = (offsetX + ArenaSize*2f);
                 Player.transform.position = Player.transform.position - new Vector3(offsetX, 0);
             }
 
-            float offsetZ = PlayerHead.transform.position.z - (ArenaSize + 1.5f);
+            float offsetZ = PlayerHead.transform.position.z - (ArenaSize);
             if (offsetZ > 0)
             {
                 Player.transform.position = Player.transform.position - new Vector3(0, 0, offsetZ);
             }
-            if (offsetZ < -60)
+            if (offsetZ < -ArenaSize*2f)
             {
-                offsetZ = (offsetZ + 60);
+                offsetZ = (offsetZ + ArenaSize*2f);
                 Player.transform.position = Player.transform.position - new Vector3(0, 0, offsetZ);
             }
         }

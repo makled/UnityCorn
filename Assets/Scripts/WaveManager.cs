@@ -80,6 +80,7 @@ namespace Unitycorn
             }
             Enemies.Clear();
             isSpawned = false;
+            GunManager.Instance.RechargeGun();
         }
     }
 }

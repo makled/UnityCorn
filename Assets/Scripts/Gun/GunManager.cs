@@ -26,6 +26,8 @@ namespace Unitycorn
         [Tooltip("Refrence to the Text displaying the Energy")]
         [SerializeField]
         private Text EnergyTextField;
+
+        public static GunManager Instance;
         // [Tooltip("Bullet Energy Consumption value in float")]
         // [SerializeField]
         // private float bulletConsumption;
@@ -37,6 +39,18 @@ namespace Unitycorn
 
         }
 
+        private void Awake()
+        {
+            if(Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -45,6 +59,10 @@ namespace Unitycorn
 
         public void ShootGun()
         {
+            if(Energy -BulletType.BulletEnergyConsumption < 0)
+            {
+                return;
+            }
             GameObject bulletInstance = Instantiate(BulletPrefab);
             bulletInstance.transform.position = MuzzleGameObject.transform.position;
             bulletInstance.transform.rotation = MuzzleGameObject.transform.rotation;
@@ -52,6 +70,11 @@ namespace Unitycorn
             Energy = Energy - BulletType.BulletEnergyConsumption;
             bulletInstance.GetComponent<BulletController>().SetDamage(BulletType.BulletDamage);
             
+        }
+
+        public void RechargeGun()
+        {
+            Energy = 500;
         }
     } 
 }

@@ -19,7 +19,10 @@ namespace Unitycorn
         // Update is called once per frame
         void Update()
         {
-
+            if(transform.position.magnitude > 90)
+            {
+                Destroy(gameObject);
+            }
         }
 
         public void SetDamage(float d)
