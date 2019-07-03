@@ -6,7 +6,10 @@ namespace Unitycorn
 {
     public class BulletController : MonoBehaviour
     {
+        private static float BULLET_SPEED = 20f;
+
         private float Damage;
+
         // Start is called before the first frame update
         void Start()
         {
