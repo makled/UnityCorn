@@ -13,7 +13,8 @@ namespace Unitycorn
         // Start is called before the first frame update
         void Start()
         {
-            
+            gameObject.transform.Rotate(90, 0, 0);
+            gameObject.transform.localScale.Set(0.05f, 0.1f, 0.05f);
         }
 
         // Update is called once per frame
