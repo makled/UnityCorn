@@ -11,7 +11,7 @@ namespace Unitycorn
         public int IDLE_TIME_BETWEEN_CHOICES = 2; 
         public float RATE_TARGET_PLAYER = 0.5f;
         public float SPEED = 2f;
-        public float MAX_HEIGHT = 1f;
+        public float MAX_HEIGHT = 0.5f;
 
         [SerializeField]
         private GameObject Player;
@@ -51,26 +51,33 @@ namespace Unitycorn
 
                 float dist = Vector3.Distance(transform.position, Player.transform.position);
 
-                if (dist < 2)
-                    return;
-
-                transform.position = Vector3.MoveTowards(transform.position, target, step);
-                if(up)
+                bool move = false;
+                if (dist > 2)
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, target, step);
+                    move = true;
+                }
+                else
+                {
+                    up = false;
+                }
+                    
+                if(move && up)
                 {
                     if (transform.position.y < groundHeight + MAX_HEIGHT)
                     {
-                        transform.position = transform.position + new Vector3(0f, step, 0f);
+                        transform.position = transform.position + new Vector3(0f, step * 2f, 0f);
                     }
                     else
                     {
                         up = false;
                     }
                 }
-                else
+                else if(!up)
                 {
                     if (transform.position.y > groundHeight)
                     {
-                        transform.position = transform.position - new Vector3(0f, step, 0f);
+                        transform.position = transform.position - new Vector3(0f, step * 2f, 0f);
                     }
                     else
                     {
