@@ -14,6 +14,7 @@ namespace Unitycorn
         public GameObject GreenEnemy;
         public GameObject[] spawnPoints;
         private int maxNumberGroups =3;
+        private float delayTime = 0.5f;
         // Start is called before the first frame update
         void Start()
         {
@@ -38,7 +39,7 @@ namespace Unitycorn
             Debug.Log("Enemies");
         }
 
-        public void SpawnEnemies()
+        public IEnumerator SpawnEnemies()
         {
             isSpawned = true;
 
@@ -50,6 +51,8 @@ namespace Unitycorn
                 Spawner spawnScript = selectedSpawnPoint.GetComponent<Spawner>();
                 for (int i = 0; i < System.Int32.Parse(tempEnemy[1]); i++)
                 {
+
+                    yield return new WaitForSeconds(delayTime);
                     switch (tempEnemy[0])
                     {
                         case "G":
