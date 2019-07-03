@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public void Spawn(GameObject enemy)
+    public List<GameObject> Enemies;
+
+    private void Start()
     {
-        Instantiate(enemy, transform.position, Quaternion.identity);
+        InvokeRepeating(nameof(Spawn), 0f, 3f);
+    }
+
+    public void Spawn()
+    {
+        if (Enemies.Count <= 0)
+            return;
+
+        Instantiate(Enemies[0], transform.position, Quaternion.identity);
+        Enemies.RemoveAt(0);
+    }
+
+    public void SetEnemies(GameObject e)
+    {
+        Enemies.Add(e);
     }
 }

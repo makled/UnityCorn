@@ -26,7 +26,7 @@ namespace Unitycorn
         // Update is called once per frame
         void Update()
         {
-            if(Enemies.Count >= 3 && !isSpawned)
+            if(Enemies.Count >= 1 && !isSpawned)
             {
                 
                 SpawnEnemies();
@@ -42,44 +42,44 @@ namespace Unitycorn
             Debug.Log("Enemies");
         }
 
-        public IEnumerator SpawnEnemies()
+        public void SpawnEnemies()
         {
             isSpawned = true;
 
             foreach(var enemy in Enemies)
             {
                 string[] tempEnemy = enemy.Split('_');
-                int randPos = Random.Range(0, 5);
-                GameObject selectedSpawnPoint = this.spawnPoints[randPos]; // select random SpawnPoint
-                Spawner spawnScript = selectedSpawnPoint.GetComponent<Spawner>();
+                
                 for (int i = 0; i < System.Int32.Parse(tempEnemy[1]); i++)
                 {
+                    int randPos = Random.Range(0, 5);
+                    GameObject selectedSpawnPoint = this.spawnPoints[randPos]; // select random SpawnPoint
+                    Spawner spawnScript = selectedSpawnPoint.GetComponent<Spawner>();
 
-                    yield return new WaitForSeconds(delayTime);
                     switch (tempEnemy[0])
                     {
                         case "G":
                             {
                                 // GameObject g = Instantiate(GreenEnemy);
                                 // g.transform.position = SpawnPoint[randPos].position;
-                                spawnScript.Spawn(GreenEnemy);
+                                spawnScript.SetEnemies(GreenEnemy);
                                 break;
                             }
                         case "B":
                             {
-                                spawnScript.Spawn(BlueEnemy);
+                                spawnScript.SetEnemies(BlueEnemy);
                                 break;
                             }
                         case "R":
-                            {
-                                spawnScript.Spawn(RedEnemy);
+                            {   
+                                spawnScript.SetEnemies(RedEnemy);
                                 break;
                             }
                     }
                 }
             }
             Enemies.Clear();
-            
+            isSpawned = false;
         }
     }
 }

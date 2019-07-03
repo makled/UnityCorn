@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
         {
             Spawner spawnerScript = enemyAndSpawn.Item2.GetComponent<Spawner>();
             GameObject enemy = enemyAndSpawn.Item1;
-            spawnerScript.Spawn(enemy);
+           // spawnerScript.Spawn(enemy);
         }
     }
 }
