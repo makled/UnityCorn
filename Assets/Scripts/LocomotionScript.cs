@@ -12,9 +12,9 @@ namespace Unitycorn
         private static float CLOSE_TO_MIN_STICK_MAGNITUDE = 0.5f;
         private static float LOCOMOTION_FORCE = 0.05f;
         private static float MOMENTUM_PART = 0.95f;
-        private static float DASH_MULTIPLIER = 10f;
+        private static float DASH_MULTIPLIER = 7f;
         private static int DASH_TIME_MILLIS = 400;
-        private static int FLICK_TOLERANCE_MILLIS = 200;
+        private static int FLICK_TOLERANCE_MILLIS = 125;
 
         [SerializeField]
         private int ArenaSize;
