@@ -12,7 +12,7 @@ namespace Unitycorn
         private static float CLOSE_TO_MIN_STICK_MAGNITUDE = 0.5f;
         private static float LOCOMOTION_FORCE = 0.05f;
         private static float MOMENTUM_PART = 0.95f;
-        private static float DASH_MULTIPLIER = 4f;
+        private static float DASH_MULTIPLIER = 10f;
         private static int DASH_TIME_MILLIS = 400;
         private static int FLICK_TOLERANCE_MILLIS = 200;
 
@@ -79,7 +79,6 @@ namespace Unitycorn
 
         private void cropPositionOfPlayer()
         {
-            Debug.Log("Croping pos");
             float offsetX = PlayerHead.transform.position.x - (ArenaSize+1.5f);
             if (offsetX > 0)
             {
