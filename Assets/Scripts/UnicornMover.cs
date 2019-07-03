@@ -6,12 +6,14 @@ namespace Unitycorn
 {
     public class UnicornMover : MonoBehaviour
     {
-        public int MIN_TIME_CHOICE_SECONDS = 3;
-        public int MAX_TIME_CHOICE_SECONDS = 10;
-        public int IDLE_TIME_BETWEEN_CHOICES = 2; 
-        public float RATE_TARGET_PLAYER = 0.5f;
-        public float SPEED = 2f;
-        public float MAX_HEIGHT = 0.5f;
+        private int MIN_TIME_CHOICE_SECONDS = 3;
+        private int MAX_TIME_CHOICE_SECONDS = 20;
+        private int IDLE_TIME_BETWEEN_CHOICES = 2;
+        private float RATE_TARGET_PLAYER = 0.5f;
+        private float SPEED = 2f;
+        private float MAX_HEIGHT = 0.4f;
+        private float BOBBING_MULTIPLIER = 2f;
+        private float TURN_RATE = 0.1f;
 
         [SerializeField]
         private GameObject Player;
@@ -23,6 +25,7 @@ namespace Unitycorn
         private bool up;
 
         // Start is called before the first frame update
+
         void Start()
         {
             groundHeight = gameObject.transform.position.y;
@@ -52,9 +55,9 @@ namespace Unitycorn
                 float dist = Vector3.Distance(transform.position, Player.transform.position);
 
                 bool move = false;
-                if (dist > 2)
+                if (dist > 3)
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, target, step);
+                    transform.position = transform.position + transform.forward.normalized * step;
                     move = true;
                 }
                 else
@@ -66,7 +69,7 @@ namespace Unitycorn
                 {
                     if (transform.position.y < groundHeight + MAX_HEIGHT)
                     {
-                        transform.position = transform.position + new Vector3(0f, step * 2f, 0f);
+                        transform.position = transform.position + new Vector3(0f, step * BOBBING_MULTIPLIER, 0f);
                     }
                     else
                     {
@@ -77,7 +80,7 @@ namespace Unitycorn
                 {
                     if (transform.position.y > groundHeight)
                     {
-                        transform.position = transform.position - new Vector3(0f, step * 2f, 0f);
+                        transform.position = transform.position - new Vector3(0f, step * BOBBING_MULTIPLIER, 0f);
                     }
                     else
                     {
@@ -85,8 +88,9 @@ namespace Unitycorn
                     }
                 }
                 
-                
-                transform.LookAt(target);
+                Vector3 toTarget = target - transform.position;
+
+                transform.forward = Vector3.Lerp(transform.forward, toTarget, TURN_RATE*Time.deltaTime);
                 transform.localEulerAngles = new Vector3(0f, transform.localEulerAngles.y, 0f);
             }
         }

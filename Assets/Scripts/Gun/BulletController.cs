@@ -13,7 +13,7 @@ namespace Unitycorn
         // Start is called before the first frame update
         void Start()
         {
-            GetComponent<Rigidbody>().AddForce(this.transform.forward * 4f, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(this.transform.forward * BULLET_SPEED, ForceMode.Impulse);
         }
 
         // Update is called once per frame
