@@ -12,11 +12,14 @@ namespace Unitycorn
         public GameObject RedEnemy;
         public GameObject BlueEnemy;
         public GameObject GreenEnemy;
+        public GameObject[] spawnPoints;
+        private int maxNumberGroups =3;
         // Start is called before the first frame update
         void Start()
         {
             Enemies = new List<string>();
             //SpawnPoints = GameObject.FindGameObjectsWithTag("")
+            spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
         }
 
         // Update is called once per frame
@@ -34,43 +37,36 @@ namespace Unitycorn
             Enemies.Add(enemyString);
             Debug.Log("Enemies");
         }
-        //void SpawnInitialization(System.Tuple<GameObject, GameObject>[] selectedEnemiesAndSpawns)
-        //{
-        //    foreach (List<GameObject> enemyAndSpawn in selectedEnemiesAndSpawns)
-        //    {
-        //        Spawner spawnerScript = enemyAndSpawn.Item2.GetComponent<Spawner>();
-        //        GameObject enemy = enemyAndSpawn.Item1;
-        //        spawnerScript.Spawn(enemy);
-        //    }
-        //}
 
         public void SpawnEnemies()
         {
             isSpawned = true;
+
             foreach(var enemy in Enemies)
             {
                 string[] tempEnemy = enemy.Split('_');
                 int randPos = Random.Range(0, 5);
-                for(int i = 0; i < System.Int32.Parse(tempEnemy[1]); i++)
+                GameObject selectedSpawnPoint = this.spawnPoints[randPos]; // select random SpawnPoint
+                Spawner spawnScript = selectedSpawnPoint.GetComponent<Spawner>();
+                for (int i = 0; i < System.Int32.Parse(tempEnemy[1]); i++)
                 {
                     switch (tempEnemy[0])
                     {
                         case "G":
                             {
-                                GameObject g = Instantiate(GreenEnemy);
-                                g.transform.position = SpawnPoint[randPos].position;
+                                // GameObject g = Instantiate(GreenEnemy);
+                                // g.transform.position = SpawnPoint[randPos].position;
+                                spawnScript.Spawn(GreenEnemy);
                                 break;
                             }
                         case "B":
                             {
-                                GameObject g = Instantiate(BlueEnemy);
-                                g.transform.position = SpawnPoint[randPos].position;
+                                spawnScript.Spawn(BlueEnemy);
                                 break;
                             }
                         case "R":
                             {
-                                GameObject g = Instantiate(RedEnemy);
-                                g.transform.position = SpawnPoint[randPos].position;
+                                spawnScript.Spawn(RedEnemy);
                                 break;
                             }
                     }
