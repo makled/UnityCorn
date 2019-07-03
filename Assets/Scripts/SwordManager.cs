@@ -7,20 +7,20 @@ namespace Unitycorn
     public class SwordManager : MonoBehaviour
     {
         private float Damage = 1;
-        public GameObject hand;
+        //public GameObject hand;
         
 
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            transform.root.position = hand.transform.position;
-            transform.root.rotation = hand.transform.rotation;
+            //transform.root.position = hand.transform.position;
+            //transform.root.rotation = hand.transform.rotation;
         }
         private void OnCollisionEnter(Collision collision)
         {

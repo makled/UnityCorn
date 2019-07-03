@@ -41,7 +41,8 @@ public class UnicornSpellerInterface : MonoBehaviour
     {
         ItemReceivedEventArgs eventArgs = (ItemReceivedEventArgs) args;
         Debug.Log(String.Format("Received BoardItem:\tName: {0}\tOutput Text: {1}", eventArgs.BoardItem.Name, eventArgs.BoardItem.OutputText));
-        waveMan.AddEnemy(eventArgs.BoardItem.OutputText);
+
         //Do something...
+        waveMan.AddEnemy(eventArgs.BoardItem.OutputText);
     }
 }

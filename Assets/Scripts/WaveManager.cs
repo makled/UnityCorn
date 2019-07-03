@@ -23,6 +23,7 @@ namespace Unitycorn
         {
             if(Enemies.Count >= 3 && !isSpawned)
             {
+                
                 SpawnEnemies();
             }
         }
@@ -30,6 +31,7 @@ namespace Unitycorn
         public void AddEnemy(string enemyString)
         {
             Enemies.Add(enemyString);
+            Debug.Log("Enemies");
         }
 
         public void SpawnEnemies()
@@ -65,6 +67,7 @@ namespace Unitycorn
                     }
                 }
             }
+            Enemies.Clear();
             
         }
     }
