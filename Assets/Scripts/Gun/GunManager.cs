@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Unitycorn
 {
@@ -22,6 +23,9 @@ namespace Unitycorn
         [SerializeField]
         private Bullet BulletType;
 
+        [Tooltip("Refrence to the Text displaying the Energy")]
+        [SerializeField]
+        private Text EnergyTextField;
         // [Tooltip("Bullet Energy Consumption value in float")]
         // [SerializeField]
         // private float bulletConsumption;
@@ -36,7 +40,7 @@ namespace Unitycorn
         // Update is called once per frame
         void Update()
         {
-
+            EnergyTextField.text = "" + Energy;
         }
 
         public void ShootGun()
