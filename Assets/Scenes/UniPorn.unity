@@ -256,25 +256,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4611299951965008704, guid: fce27154b7fb74d479280e54bef2c61d,
-        type: 3}
-      propertyPath: button.actionPath
-      value: /actions/default/in/ShootGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611299951965008704, guid: fce27154b7fb74d479280e54bef2c61d,
-        type: 3}
-      propertyPath: locomotion
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 905362713, guid: fce27154b7fb74d479280e54bef2c61d, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4442764620430587183, guid: fce27154b7fb74d479280e54bef2c61d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fce27154b7fb74d479280e54bef2c61d, type: 3}
 --- !u!1001 &1779975501567040074
@@ -337,17 +318,17 @@ PrefabInstance:
     - target: {fileID: 1779975500826339570, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7485227
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779975500826339570, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.24445006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779975500826339570, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.342013
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779975500826339570, guid: 7d5fefdd96e09c443b29f8d5af048938,
         type: 3}
