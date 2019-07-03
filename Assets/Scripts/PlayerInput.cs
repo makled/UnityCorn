@@ -15,12 +15,14 @@ namespace Unitycorn
         // Start is called before the first frame update
         void Start()
         {
-
+            gun = FindObjectOfType<GunManager>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            if(gun == null)
+                gun = FindObjectOfType<GunManager>();
             isShoot = SteamVR_Input.GetStateUp("ShootGun", SteamVR_Input_Sources.LeftHand);
             if(isShoot)
             {
