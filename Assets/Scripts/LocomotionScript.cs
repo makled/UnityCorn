@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,14 +10,19 @@ namespace Unitycorn
 
         private static float CLOSE_TO_MAX_STICK_MAGNITUDE = 0.8f;
         private static float CLOSE_TO_MIN_STICK_MAGNITUDE = 0.5f;
-        private static float LOCOMOTION_FORCE = 0.03f;
+        private static float LOCOMOTION_FORCE = 0.05f;
         private static float MOMENTUM_PART = 0.66f;
+        private static float DASH_MULTIPLIER = 4f;
         private static int DASH_TIME_MILLIS = 400;
         private static int FLICK_TOLERANCE_MILLIS = 200;
 
+        [SerializeField]
+        private int ArenaSize;
 
         [SerializeField]
-        private GameObject player;
+        private GameObject Player;
+        [SerializeField]
+        private GameObject PlayerHead;
 
         private System.DateTime lastFlick;
         private System.DateTime lastCheck;
@@ -67,8 +73,33 @@ namespace Unitycorn
             }
             
             applyRegularLocomotion(vector);
-
+            cropPositionOfPlayer();
             //Debug.Log("Vector: (" + vector.x + " ," + vector.y + ") mag: " + vector.magnitude);
+        }
+
+        private void cropPositionOfPlayer()
+        {
+            float offsetX = PlayerHead.transform.position.x - ArenaSize;
+            if (offsetX > 0)
+            {
+                Player.transform.position = Player.transform.position - new Vector3(offsetX, 0);
+            }
+            if (offsetX < -60)
+            {
+                offsetX = (offsetX + 60);
+                Player.transform.position = Player.transform.position - new Vector3(offsetX, 0);
+            }
+
+            float offsetY = PlayerHead.transform.position.y - ArenaSize;
+            if (offsetY > 0)
+            {
+                Player.transform.position = Player.transform.position - new Vector3(0, offsetY);
+            }
+            if (offsetY < -60)
+            {
+                offsetY = (offsetY + 60);
+                Player.transform.position = Player.transform.position - new Vector3(0, offsetY);
+            }
         }
 
         private void applyDash(Vector2 vector)
@@ -81,7 +112,7 @@ namespace Unitycorn
         {
             if (System.DateTime.Now.Subtract(lastDash) < new System.TimeSpan(0, 0, 0, 0, DASH_TIME_MILLIS))
             {
-                vector = vector * 4f;
+                vector = vector * DASH_MULTIPLIER;
             }
 
             Vector2 locomotion = lastLocomotionVector * MOMENTUM_PART + vector * (1f-MOMENTUM_PART);
@@ -91,7 +122,7 @@ namespace Unitycorn
             while(lastRegularLocomotion<System.DateTime.Now)
             {
                 lastRegularLocomotion = lastRegularLocomotion + new System.TimeSpan(0, 0, 0, 0, 8);
-                player.transform.position = player.transform.position - new Vector3(locomotion.x, 0, locomotion.y) * LOCOMOTION_FORCE;
+                Player.transform.position = Player.transform.position + new Vector3(locomotion.x, 0, locomotion.y) * LOCOMOTION_FORCE;
             }
         }
     }
