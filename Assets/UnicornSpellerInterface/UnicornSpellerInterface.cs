@@ -6,6 +6,13 @@ using Unity.ItemRecever;
 public class UnicornSpellerInterface : MonoBehaviour
 {
     public Unitycorn.WaveManager waveMan;
+
+    [Tooltip("Activate this to not wait on receiving Commands from the BCI but spawn enemies randmoly.")]
+    [SerializeField]
+    public bool random;
+
+    private System.DateTime lastSpawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +30,8 @@ public class UnicornSpellerInterface : MonoBehaviour
             r.OnItemReceived += OnItemReceived;
 
             Debug.Log(String.Format("Listening to {0} on port {1}.", ip, port));
+
+            lastSpawn = System.DateTime.Now;
         }
         catch (Exception ex)
         {
@@ -33,6 +42,25 @@ public class UnicornSpellerInterface : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(random && (System.DateTime.Now-lastSpawn > new System.TimeSpan(0, 0, 0, 8)))
+        {
+            lastSpawn = System.DateTime.Now;
+            float rndmValue = UnityEngine.Random.value;
+            String result = "";
+            if(rndmValue<0.33f)
+            {
+                result += "G_";
+            }else if(rndmValue < 0.66f)
+            {
+                result += "B_";
+            }
+            else
+            {
+                result += "R_";
+            }
+            result += ("" + UnityEngine.Random.Range(5, 21));
+            waveMan.AddEnemy(result);
+        }
         //Do something...
     }
 
@@ -42,7 +70,10 @@ public class UnicornSpellerInterface : MonoBehaviour
         ItemReceivedEventArgs eventArgs = (ItemReceivedEventArgs) args;
         Debug.Log(String.Format("Received BoardItem:\tName: {0}\tOutput Text: {1}", eventArgs.BoardItem.Name, eventArgs.BoardItem.OutputText));
 
-        //Do something...
-        waveMan.AddEnemy(eventArgs.BoardItem.OutputText);
+        if(!random)
+        {
+            waveMan.AddEnemy(eventArgs.BoardItem.OutputText);
+        }
+        
     }
 }
