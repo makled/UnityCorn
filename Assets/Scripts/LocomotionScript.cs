@@ -80,7 +80,7 @@ namespace Unitycorn
         private void cropPositionOfPlayer()
         {
             Debug.Log("Croping pos");
-            float offsetX = PlayerHead.transform.position.x - ArenaSize;
+            float offsetX = PlayerHead.transform.position.x - (ArenaSize+1.5f);
             if (offsetX > 0)
             {
                 Player.transform.position = Player.transform.position - new Vector3(offsetX, 0);
@@ -91,7 +91,7 @@ namespace Unitycorn
                 Player.transform.position = Player.transform.position - new Vector3(offsetX, 0);
             }
 
-            float offsetZ = PlayerHead.transform.position.z - ArenaSize;
+            float offsetZ = PlayerHead.transform.position.z - (ArenaSize + 1.5f);
             if (offsetZ > 0)
             {
                 Player.transform.position = Player.transform.position - new Vector3(0, 0, offsetZ);
@@ -123,7 +123,8 @@ namespace Unitycorn
             while(lastRegularLocomotion<System.DateTime.Now)
             {
                 lastRegularLocomotion = lastRegularLocomotion + new System.TimeSpan(0, 0, 0, 0, 8);
-                Player.transform.position = Player.transform.position + new Vector3(locomotion.x, 0, locomotion.y) * LOCOMOTION_FORCE;
+                Vector3 relativePositionChange = new Vector3(locomotion.x, 0, locomotion.y) * LOCOMOTION_FORCE;
+                Player.transform.position = Player.transform.position + PlayerHead.transform.TransformVector(relativePositionChange);
             }
         }
     }
