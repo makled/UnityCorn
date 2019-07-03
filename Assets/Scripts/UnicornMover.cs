@@ -48,6 +48,12 @@ namespace Unitycorn
             if(System.DateTime.Now > lastTargetChosen+ new System.TimeSpan(0, 0, 0, IDLE_TIME_BETWEEN_CHOICES))
             {
                 float step = SPEED * Time.deltaTime; // calculate distance to move
+
+                float dist = Vector3.Distance(transform.position, Player.transform.position);
+
+                if (dist < 2)
+                    return;
+
                 transform.position = Vector3.MoveTowards(transform.position, target, step);
                 if(up)
                 {
@@ -74,6 +80,7 @@ namespace Unitycorn
                 
                 
                 transform.LookAt(target);
+                transform.localEulerAngles = new Vector3(0f, transform.localEulerAngles.y, 0f);
             }
         }
 
