@@ -16,6 +16,7 @@ namespace Unitycorn
         void Start()
         {
             Enemies = new List<string>();
+            //SpawnPoints = GameObject.FindGameObjectsWithTag("")
         }
 
         // Update is called once per frame
@@ -33,11 +34,19 @@ namespace Unitycorn
             Enemies.Add(enemyString);
             Debug.Log("Enemies");
         }
+        //void SpawnInitialization(System.Tuple<GameObject, GameObject>[] selectedEnemiesAndSpawns)
+        //{
+        //    foreach (List<GameObject> enemyAndSpawn in selectedEnemiesAndSpawns)
+        //    {
+        //        Spawner spawnerScript = enemyAndSpawn.Item2.GetComponent<Spawner>();
+        //        GameObject enemy = enemyAndSpawn.Item1;
+        //        spawnerScript.Spawn(enemy);
+        //    }
+        //}
 
         public void SpawnEnemies()
         {
             isSpawned = true;
-
             foreach(var enemy in Enemies)
             {
                 string[] tempEnemy = enemy.Split('_');
