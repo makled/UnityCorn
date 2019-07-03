@@ -28,7 +28,7 @@ namespace Unitycorn
 
         void Start()
         {
-            groundHeight = gameObject.transform.position.y;
+            groundHeight = 0;
             targetPlayer();
             up = true;
         }
