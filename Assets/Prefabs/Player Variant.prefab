@@ -371,6 +371,11 @@ PrefabInstance:
       propertyPath: grabPinchAction.actionPath
       value: /actions/default/in/ShootGun
       objectReference: {fileID: 0}
+    - target: {fileID: 11401046, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: renderModelPrefab
+      value: 
+      objectReference: {fileID: 8397177035782980203, guid: 992562df6db15e24d95ad1e9230e0188,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
 --- !u!1 &4611299951965008703 stripped
