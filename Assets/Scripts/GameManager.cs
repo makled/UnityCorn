@@ -10,7 +10,13 @@ namespace Unitycorn
         public static GameManager Instance = null;
         public Text UniCoinText;
         public Text MMCoinText;
+        public Text GameOverText;
         public int UniCoin, MMCoin;
+
+        public bool gameOver;
+        public bool mmWon;
+        public bool defWon;
+
         private void Awake()
         {
             if (Instance == null)
@@ -24,7 +30,9 @@ namespace Unitycorn
         // Start is called before the first frame update
         void Start()
         {
-
+            gameOver = false;
+            mmWon = false;
+            defWon = false;
         }
 
         // Update is called once per frame
@@ -32,21 +40,54 @@ namespace Unitycorn
         {
             UniCoinText.text = UniCoin.ToString();
             MMCoinText.text = MMCoin.ToString();
+
+            if(mmWon)
+            {
+                UniCoinText.text = "Victory!";
+                MMCoinText.text = "Defeat!";
+            }
+            if (defWon)
+            {
+                UniCoinText.text = "Defeat!";
+                MMCoinText.text = "Victory!";
+            }
+            if (!gameOver)
+            {
+                testGameOver();
+            }
+        }
+
+        private void testGameOver()
+        {
+            if(UniCoin < 0)
+            {
+                gameOver = true;
+                mmWon = true;
+                defWon = false;
+                GameOverText.text = "You Died!";
+            }
+            else if (MMCoin < 0)
+            {
+                gameOver = true;
+                mmWon = false;
+                defWon = true;
+                GameOverText.text = "You Win!";
+            } 
         }
 
         public void IncreasePlayerCoin()
         {
-            UniCoin = UniCoin + 100;
+            UniCoin = UniCoin + 10;
         }
 
         public void IncreaseMasterMindCoin()
         {
-            UniCoin = UniCoin + 250;
+            UniCoin = UniCoin + 50;
         }
 
         public void DecreasePlayerCoin()
         {
-            UniCoin = UniCoin - 100;
+            UniCoin = UniCoin - 60;
         }
         public void DecreaseMasterMindCoin(int value)
         {

@@ -52,6 +52,10 @@ namespace Unitycorn
 
         public void supplyLocomotionVector(Vector2 vector)
         {
+            if(GameManager.Instance.gameOver)
+            {
+                return;
+            }
             if (vector.magnitude > CLOSE_TO_MAX_STICK_MAGNITUDE)
             {
                 if(System.DateTime.Now.Subtract(lastCheck) < new System.TimeSpan(0, 0, 0, 0, FLICK_TOLERANCE_MILLIS) && lastCheckVector.magnitude < CLOSE_TO_MIN_STICK_MAGNITUDE)

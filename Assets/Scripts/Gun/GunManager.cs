@@ -54,6 +54,7 @@ namespace Unitycorn
         // Update is called once per frame
         void Update()
         {
+            Energy = GameManager.Instance.UniCoin;
             EnergyTextField.text = "" + Energy;
         }
 

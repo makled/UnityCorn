@@ -36,6 +36,10 @@ namespace Unitycorn
         // Update is called once per frame
         void Update()
         {
+            if(GameManager.Instance.mmWon)
+            {
+                groundHeight = 9001;
+            }
             if(System.DateTime.Now > lastTargetChosen+timeTillNextChoice)
             {
                 if(Random.value<RATE_TARGET_PLAYER)
@@ -55,7 +59,7 @@ namespace Unitycorn
                 float dist = Vector3.Distance(transform.position, Player.transform.position);
 
                 bool move = false;
-                if (dist > 3)
+                if (dist > 3 || GameManager.Instance.mmWon)
                 {
                     transform.position = transform.position + transform.forward.normalized * step;
                     move = true;
