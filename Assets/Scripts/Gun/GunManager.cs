@@ -68,7 +68,7 @@ namespace Unitycorn
             bulletInstance.transform.position = MuzzleGameObject.transform.position;
             bulletInstance.transform.rotation = MuzzleGameObject.transform.rotation;
 
-            Energy = Energy - BulletType.BulletEnergyConsumption;
+            GameManager.Instance.UniCoin = GameManager.Instance.UniCoin - (int) BulletType.BulletEnergyConsumption;
             bulletInstance.GetComponent<BulletController>().SetDamage(BulletType.BulletDamage);
             
         }

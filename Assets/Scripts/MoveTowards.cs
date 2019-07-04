@@ -21,7 +21,7 @@ namespace Unitycorn
         // Update is called once per frame
         void Update()
         {
-            if(GameManager.Instance.defWon)
+            if(GameManager.Instance.gameOver)
             {
                 target = new Vector3(0f, 9001f, 0f);
             }

@@ -43,13 +43,13 @@ namespace Unitycorn
 
             if(mmWon)
             {
-                UniCoinText.text = "Victory!";
-                MMCoinText.text = "Defeat!";
+                UniCoinText.text = "Defeat!";
+                MMCoinText.text = "Victory!";
             }
             if (defWon)
             {
-                UniCoinText.text = "Defeat!";
-                MMCoinText.text = "Victory!";
+                UniCoinText.text = "Victory!";
+                MMCoinText.text = "Defeat!";
             }
             if (!gameOver)
             {
@@ -91,7 +91,7 @@ namespace Unitycorn
         }
         public void DecreaseMasterMindCoin(int value)
         {
-            UniCoin = UniCoin - value;
+            MMCoin = MMCoin - value;
         }
 
     }

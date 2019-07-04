@@ -32,17 +32,6 @@ namespace Unitycorn
                 StartCoroutine(Die());
         }
 
-        void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                GameManager.Instance.IncreaseMasterMindCoin();
-                GameManager.Instance.DecreasePlayerCoin();
-                StartCoroutine(Die());
-                // TODO increase the score of the masterMind
-            }
-        }
-
         IEnumerator Die()
         {
             movement.speed = 0f;
