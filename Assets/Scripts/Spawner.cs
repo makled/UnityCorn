@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), 0f, 3f);
+        InvokeRepeating(nameof(Spawn), 0f, 6f);
     }
 
     public void Spawn()

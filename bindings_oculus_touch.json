@@ -1,5 +1,7 @@
 {
-   "app_key" : "application.generated.unity.steamvr.exe",
+   "action_manifest_version" : 0,
+   "alias_info" : {},
+   "app_key" : "application.generated.unity.unitycorn.exe",
    "bindings" : {
       "/actions/buggy" : {
          "sources" : [
@@ -131,7 +133,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/interactui"
+                     "output" : "/actions/default/in/shootgun"
                   }
                },
                "mode" : "button",
@@ -177,7 +179,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/interactui"
+                     "output" : "/actions/default/in/shootgun"
                   }
                },
                "mode" : "button",
@@ -236,6 +238,24 @@
                },
                "mode" : "trigger",
                "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/default/in/locomotion"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/left/input/joystick"
+            },
+            {
+               "inputs" : {
+                  "position" : {
+                     "output" : "/actions/default/in/locomotion"
+                  }
+               },
+               "mode" : "joystick",
+               "path" : "/user/hand/right/input/joystick"
             }
          ]
       },
@@ -268,7 +288,10 @@
          ]
       }
    },
+   "category" : "steamvr_input",
    "controller_type" : "oculus_touch",
    "description" : "",
-   "name" : "oculus_touch"
+   "name" : "My Unitycorn [Testing] configuration for Oculus Touch",
+   "options" : {},
+   "simulated_actions" : []
 }
